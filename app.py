@@ -2,23 +2,22 @@ import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-import pickle
 
 st.title("📩 Spam Detection AI")
 
 st.write("Enter a message to check if it is Spam or Not Spam")
 
 
-
 data = pd.read_csv("spam.csv", encoding="latin-1")
 
 data = data[['v1', 'v2']]
 data.columns = ['label', 'message']
+
 X = data["message"]
 y = data["label"]
 
 
-vectorizer = CountVectorizer()
+vectorizer = CountVectorizer(ngram_range=(1,2))
 X_vector = vectorizer.fit_transform(X)
 
 
@@ -41,5 +40,3 @@ if st.button("Check Message"):
         st.error(f"⚠️ This message is SPAM ({confidence:.2f}% confidence)")
     else:
         st.success(f"✅ This message is NOT SPAM ({confidence:.2f}% confidence)")
-model = pickle.load(open("model.pkl", "rb"))
-vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
