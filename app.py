@@ -9,8 +9,11 @@ st.title("📩 Spam Detection AI")
 st.write("Enter a message to check if it is Spam or Not Spam")
 
 
-data = pd.read_csv("spam.csv")
 
+data = pd.read_csv("spam.csv", encoding="latin-1")
+
+data = data[['v1', 'v2']]
+data.columns = ['label', 'message']
 X = data["message"]
 y = data["label"]
 
