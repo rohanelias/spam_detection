@@ -94,7 +94,7 @@ spam_detection
 Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/spam-detection-ai.git
+git clone https://github.com/rohanelias/spam_detection.git
 ```
 
 Navigate to the project folder:
