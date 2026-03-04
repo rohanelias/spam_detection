@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-
+import pickle
 
 st.title("📩 Spam Detection AI")
 
@@ -38,3 +38,5 @@ if st.button("Check Message"):
         st.error(f"⚠️ This message is SPAM ({confidence:.2f}% confidence)")
     else:
         st.success(f"✅ This message is NOT SPAM ({confidence:.2f}% confidence)")
+model = pickle.load(open("model.pkl", "rb"))
+vectorizer = pickle.load(open("vectorizer.pkl", "rb"))

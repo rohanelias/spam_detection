@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pickle
 
 data = pd.read_csv("spam.csv")
 
@@ -43,3 +44,8 @@ plt.ylabel("Actual")
 plt.title("Spam Detection Confusion Matrix")
 
 plt.show()
+
+pickle.dump(model, open("model.pkl", "wb"))
+pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
+
+print("Model saved!")
